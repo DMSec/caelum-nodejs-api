@@ -10,6 +10,11 @@ module.exports = function(){
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
 
-    load('controllers').into(app);
+    load('controllers').then('persistencia').into(app);
+
+
+
+
+
     return app;
 }
