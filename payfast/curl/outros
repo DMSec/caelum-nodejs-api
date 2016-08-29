@@ -1,0 +1,1 @@
+curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: applicati/json" -d '{"forma_de_pagamento":"payfast","valor":"10.87","moeda":"BRL","descricao":"descricao do pagamento"}'
