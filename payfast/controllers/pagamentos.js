@@ -33,8 +33,24 @@ module.exports = function(app){
     pagamentoDao.salva(pagamento,function(exception,result){
       console.log('Pagamento criado: '+ result);
 
-      res.location('/pagamentos/pagamento'+ result.insertId);
+      res.location('/pagamentos/pagamento/'+ result.insertId);
       pagamento.id = result.insertId;
+
+      var response = {
+        dados_do_pagamento: pagamento,
+        links: [
+                {
+                  href: "http://localhost:3000/pagamentos/pagamento/" + pagamento.id,
+                  rel:  "confirmar",
+                  method: "PUT"
+                },
+                {
+                  href: "http://localhost:3000/pagamentos/pagamento/"+ pagamento.id,
+                  rel: "cancelar",
+                  method: "DELETE"
+                }
+              ]
+      }
 
       res.status(201).json(pagamento);
     });
