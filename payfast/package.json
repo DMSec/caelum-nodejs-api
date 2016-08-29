@@ -1,0 +1,15 @@
+{
+  "name": "payfast",
+  "version": "1.0.0",
+  "description": "Api para pagamentos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Douglas Marra - @douglasmsi",
+  "license": "MIT",
+  "dependencies": {
+    "express": "~4.14.0",
+    "express-load": "~1.1.15"
+  }
+}
