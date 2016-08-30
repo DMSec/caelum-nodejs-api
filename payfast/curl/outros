@@ -1,1 +1,23 @@
 curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: applicati/json" -d '{"forma_de_pagamento":"payfast","valor":"10.87","moeda":"BRL","descricao":"descricao do pagamento"}'
+
+
+
+{"forma_de_pagamento":"payfast","valor":"10.87","moeda":"BRL","descricao":"descricao do pagamento"}'
+
+
+{
+    "pagamento":{
+         "forma_de_pagamento":"cartao",
+         "valor":"10.87",
+         "moeda":"BRL",
+         "descricao":"descricao do pagamento - cartao"
+    },
+
+    "cartao":{
+        "numero":"1234567890123456",
+        "bandeira":"VISA",
+        "ano_de_expiracao":"2020",
+        "mes_de_expiracao":"12",
+        "cvv":"12"
+    }
+}
