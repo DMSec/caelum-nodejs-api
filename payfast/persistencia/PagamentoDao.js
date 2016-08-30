@@ -14,6 +14,11 @@ PagamentoDao.prototype.buscaPorId = function(id,callback){
   this._connection.query("select * from pagamentos where id = ?",[id],callback);
 }
 
+PagamentoDao.prototype.confirmarPagamento = function(pagamento,callback){
+  console.log('entrou');
+  this._connection.query("update pagamentos SET status = ? where id = ?", [pagamento.status, pagamento.id],callback);
+}
+
 module.exports = function(){
   return PagamentoDao;
 };

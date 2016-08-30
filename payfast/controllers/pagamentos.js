@@ -1,4 +1,6 @@
-
+const PAGAMENTO_CRIADO = "CRIADO";
+const PAGAMENTO_CONFIRMADO = "CONFIRMADO";
+const PAGAMENTO_CANCELADO = "CANCELADO";
 
 module.exports = function(app){
 
@@ -27,7 +29,7 @@ module.exports = function(app){
 
     var pagamentoDao = new app.persistencia.PagamentoDao(connection);
 
-    pagamento.status = "CRIADO";
+    pagamento.status = PAGAMENTO_CRIADO;
     pagamento.data = new Date;
 
     pagamentoDao.salva(pagamento,function(exception,result){
@@ -54,6 +56,31 @@ module.exports = function(app){
 
       res.status(201).json(pagamento);
     });
+
+
+  });
+
+
+  app.put("/pagamentos/pagamento/:id", function(req,res){
+      var pagamento = req.body;
+      var id = req.params.id;
+
+      var connection = app.persistencia.connectionFactory();
+
+
+      var pagamentoDao = new app.persistencia.PagamentoDao(connection);
+
+      pagamento.status = PAGAMENTO_CONFIRMADO;
+
+      console.log('Before confirmarPagamento');
+
+      pagamentoDao.confirmarPagamento(pagamento, function(exception,result){
+          if(exception){
+            console.log('Erro'+ exception);
+          }
+          console.log('Pagamento confirmado');
+          res.status(200).json(pagamento);
+      });
 
 
   });
