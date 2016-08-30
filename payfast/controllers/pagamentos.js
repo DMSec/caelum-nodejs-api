@@ -9,11 +9,12 @@ module.exports = function(app){
   });
 
   app.post("/pagamentos/pagamento",function(req,res){
-    var pagamento = req.body;
+    var body = req.body;
+    var pagamento = body['pagamento'];
 
-    req.assert("forma_de_pagamento","Forma de Pagamento é obrigatoria.").notEmpty();
-    req.assert("valor","Valor é obrigatorio e deve ser um decimal").notEmpty().isFloat();
-    req.assert("moeda","Moeda é obrigatória e deve ter 3 caracteres").notEmpty().len(3,3);
+    req.assert("pagamento.forma_de_pagamento","Forma de Pagamento é obrigatoria.").notEmpty();
+    req.assert("pagamento.valor","Valor é obrigatorio e deve ser um decimal").notEmpty().isFloat();
+    req.assert("pagamento.moeda","Moeda é obrigatória e deve ter 3 caracteres").notEmpty().len(3,3);
 
     var errors = req.validationErrors();
     if(errors){
@@ -54,6 +55,8 @@ module.exports = function(app){
               ]
       }
 
+      
+
       res.status(201).json(pagamento);
     });
 
@@ -66,7 +69,6 @@ module.exports = function(app){
       var id = req.params.id;
 
       var connection = app.persistencia.connectionFactory();
-
 
       var pagamentoDao = new app.persistencia.PagamentoDao(connection);
 

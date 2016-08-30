@@ -12,7 +12,10 @@ module.exports = function(){
     app.use(bodyParser.json());
     app.use(expressValidator());
 
-    load('controllers').then('persistencia').into(app);
+    load('controllers')
+        .then('persistencia')
+        .then('servicos')
+        .into(app);
 
 
 
