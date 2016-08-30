@@ -74,7 +74,7 @@ module.exports = function(app){
 
       console.log('Before confirmarPagamento');
 
-      pagamentoDao.confirmarPagamento(pagamento, function(exception,result){
+      pagamentoDao.alteraPagamento(pagamento.status,id, function(exception,result){
           if(exception){
             console.log('Erro'+ exception);
           }
@@ -84,4 +84,30 @@ module.exports = function(app){
 
 
   });
+
+
+  app.delete("/pagamentos/pagamento/:id", function(req,res){
+      var pagamento = req.body;
+      var id = req.params.id;
+
+      var connection = app.persistencia.connectionFactory();
+
+
+      var pagamentoDao = new app.persistencia.PagamentoDao(connection);
+
+      pagamento.status = PAGAMENTO_CANCELADO;
+
+      console.log('Before cancelarPagamento');
+
+      pagamentoDao.alteraPagamento(pagamento.status,id, function(exception,result){
+          if(exception){
+            console.log('Erro'+ exception);
+          }
+          console.log('Pagamento cancelado');
+          res.status(200).json(pagamento);
+      });
+
+
+  });
+
 }
