@@ -15,6 +15,7 @@
     "mysql": "~2.11.1",
     "express-validator": "~2.20.8",
     "nsp": "~2.6.1",
-    "restify": "~4.1.1"
+    "restify": "~4.1.1",
+    "soap": "~0.16.0"
   }
 }

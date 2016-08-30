@@ -21,3 +21,6 @@ curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: app
         "cvv":"12"
     }
 }
+
+
+curl -X GET -v -H "Content-type: application/json" http://localhost:3000/correios/calculo-prazo -d '{"nCdServico":"40010","sCepOrigem":"05303030","sCepDestino":"65066635"}'
