@@ -4,6 +4,8 @@
   "description": "Api para pagamentos",
   "main": "index.js",
   "scripts": {
+    "start": "npm run clusters.js",
+    "clusters": "clusters.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Douglas Marra - @douglasmsi",
@@ -19,6 +21,7 @@
     "soap": "~0.16.0",
     "memcached": "~2.2.2",
     "winston": "~2.2.0",
-    "morgan": "~1.7.0"
+    "morgan": "~1.7.0",
+    "cluster": "~0.7.7"
   }
 }
