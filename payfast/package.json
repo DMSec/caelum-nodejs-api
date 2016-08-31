@@ -4,7 +4,7 @@
   "description": "Api para pagamentos",
   "main": "index.js",
   "scripts": {
-    "start": "npm run clusters.js",
+    "start": "node index.js",
     "clusters": "clusters.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
