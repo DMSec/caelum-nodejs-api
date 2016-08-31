@@ -17,7 +17,7 @@ var cluster = require('cluster'),
 				if(cluster.workers[wid]) {
 					cluster.workers[wid].kill('SIGKILL');
 				}
-			}, 5000);
+			}, 500000);
 		});
 	};
 
