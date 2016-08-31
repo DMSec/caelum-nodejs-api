@@ -25,4 +25,4 @@ curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: app
 
 curl -X GET -v -H "Content-type: application/json" http://localhost:3000/correios/calculo-prazo -d '{"nCdServico":"40010","sCepOrigem":"05303030","sCepDestino":"65066635"}'
 
-curl -X POST http://localhost:3000/upload/gzip -v -H "filename: teste.txt" -H "Content-type: application/octet-stream" -H "Content-Encoding: gzip" --data-binary @arquivo.doc.gz
+curl -X POST http://localhost:3000/upload/gzip -v -H "filename: index.js" -H "Content-type: application/octet-stream" -H "Content-Encoding: gzip" --data-binary @arquivo.doc.gz
